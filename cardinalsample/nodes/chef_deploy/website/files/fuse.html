@@ -1,0 +1,9 @@
+$ cat <<EOF > /path/to/var/www/fuse.html
+<html>
+  <body>
+    <h1>IP Address:</h1>
+    <p><? echo $_SERVER["REMOTE_ADDR"];?></p>
+    <h2>Hostname</h2>
+    <p>$(hostname)</p>
+  </body>
+</html>

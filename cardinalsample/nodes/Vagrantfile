@@ -1,0 +1,12 @@
+Vagrant.configure('2') do |config|
+  config.vm.box = 'bento/ubuntu-16.04'
+  config.vm.network 'forwarded_port', guest: 80, host: 5000
+  config.ssh.guest_port = 22
+ 
+  ####### Provision #######
+  config.vm.provision 'chef_zero' do |chef|
+    chef.cookbooks_path = "chef_deploy" # ❶
+    chef.add_recipe 'website'       # ❷
+    chef.nodes_path = 'chef_deploy'         # ❸
+  end
+end
